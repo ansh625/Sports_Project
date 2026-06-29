@@ -18,6 +18,7 @@ LayerTechnologyFrontendHTML5, Bootstrap 5.3, jQuery 3.7, AngularJS 1.8 (tourname
 Project structure
 
 project-root/
+
 ├── server.js                  # Express server, all API routes
 ├── index.html                 # Login / Register page
 │
