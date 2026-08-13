@@ -1,36 +1,59 @@
-ArenaConnect 
-
+# ArenaConnect
 
 A full-stack sports tournament management platform for organizers and players.
 
-What it does
+ArenaConnect simplifies tournament publishing, discovery, and profile management through a responsive web interface and a Node.js + MongoDB backend.
 
-ArenaConnect has two user roles:
+---
 
-Organizers — create a profile, publish tournaments with details and a poster image, manage their events
-Players — create a profile, browse and filter tournaments by city and sport, view full tournament details in a modal
+## Features
 
-Tech stack
+### Organizer
+- Create and manage organizer profile
+- Publish tournaments with:
+  - title
+  - city
+  - sport
+  - date and venue
+  - description
+  - poster image upload
+- Update tournament information
 
-LayerTechnologyFrontendHTML5, Bootstrap 5.3, jQuery 3.7, AngularJS 1.8 (tournament finder)BackendNode.js + ExpressDatabaseMongoDBFile uploadsMulterSessionlocalStorage (activeUser key)
+### Player
+- Create and manage player profile
+- Browse available tournaments
+- Filter tournaments by **city** and **sport**
+- View complete tournament details in a modal window
 
+---
 
-Project structure
+## Tech Stack
 
+| Layer | Technology |
+|------|------------|
+| Frontend | HTML5, Bootstrap 5.3, jQuery 3.7, AngularJS 1.8 |
+| Backend | Node.js, Express.js |
+| Database | MongoDB |
+| File Uploads | Multer |
+| Session Handling | localStorage (activeUser) |
+
+---
+
+## Project Structure
+
+```text
 project-root/
-
-├── server.js                  # Express server, all API routes
-├── index.html                 # Login / Register page
 │
-├── DashOrganizer.html         # Organizer dashboard
-├── profileOrganizer.html      # Organizer profile (save/update)
-├── publish-tournaments.html   # Post a new tournament
+├── server.js
+├── index.html
+├── DashOrganizer.html
+├── profileOrganizer.html
+├── publish-tournaments.html
+├── DashPlayer.html
+├── profilePlayer.html
+├── tournament-finder.html
 │
-├── DashPlayer.html            # Player dashboard
-├── profilePlayer.html         # Player profile (save/update)
-├── tournament-finder.html     # Browse & filter tournaments (AngularJS)
-│
-├── Styling/                   # CSS files (one per page)
+├── Styling/
 │   ├── dashOrganizer.css
 │   ├── dashPlayer.css
 │   ├── profileOrganizer.css
@@ -38,36 +61,102 @@ project-root/
 │   ├── publish-tournaments.css
 │   └── tournament-finder.css
 │
-├── dashboardpics/             # Static images used in the UI
-│   └── *.jpg
+├── dashboardpics/
 │
-└── uploads/                   # Profile pics & tournament posters (Multer output)
-    └── (auto-generated, gitignored)
+└── uploads/
+```
 
+---
 
-API routes (server.js)
+## API Endpoints
 
-MethodRoutePurposePOST/loginPlayer/organizer loginPOST/registerNew user registrationPOST/settingsPlayer password updatePOST/settings-organizerOrganizer password updateGET/search-userFetch organizer profile by emailPOST/saveSave organizer profilePOST/updateUpdate organizer profileGET/fetch-profileFetch player profile by emailPOST/save-profileSave player profilePOST/update-profileUpdate player profilePOST/upload-proofUpload player ID proof filePOST/publish-tournamentSave a new tournamentGET/showCitiesDistinct cities for dropdownGET/showGamesDistinct games for dropdownGET/showRecordsFilter tournaments by city + game
+### Authentication
+- POST `/login`
+- POST `/register`
 
+### Organizer Profile
+- GET `/search-user`
+- POST `/save`
+- POST `/update`
 
-Getting started locally
+### Player Profile
+- GET `/fetch-profile`
+- POST `/save-profile`
+- POST `/update-profile`
+- POST `/upload-proof`
 
-Prerequisites: Node.js 18+, MongoDB running locally or a MongoDB Atlas URI
+### Tournaments
+- POST `/publish-tournament`
+- GET `/showCities`
+- GET `/showGames`
+- GET `/showRecords`
 
-bash# 1. Clone the repo
+---
+
+## Getting Started
+
+### Prerequisites
+- Node.js 18+
+- MongoDB running locally or a MongoDB Atlas URI
+
+### Clone the repository
+
+```bash
 git clone https://github.com/your-username/arenaconnect.git
 cd arenaconnect
+```
 
-# 2. Install dependencies
+### Install dependencies
+
+```bash
 npm install
+```
 
-# 3. Set your MongoDB connection string
-# Either edit server.js directly, or add a .env file:
-# MONGO_URI=mongodb://localhost:27017/arenaconnect
-# PORT=3000
+### Configure environment variables
 
-# 4. Start the server
+Create a `.env` file:
+
+```env
+MONGO_URI=mongodb://localhost:27017/arenaconnect
+PORT=3000
+```
+
+### Start the server
+
+```bash
 node server.js
+```
 
-# 5. Open in browser
-# http://localhost:3000
+### Open in browser
+
+```text
+http://localhost:3000
+```
+
+---
+
+## Future Improvements
+
+- JWT authentication
+- Password hashing with bcrypt
+- Role-based access control
+- Tournament registration and payment integration
+- Admin dashboard
+- Cloud storage for uploads
+
+---
+
+## Author
+
+**Anshpreet Kaur**
+
+- Full Stack Developer
+- MERN Stack | Web Development | MongoDB | Node.js
+
+GitHub: https://github.com/ansh625
+
+---
+
+## License
+
+This project is licensed under the **MIT License**.
